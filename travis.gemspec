@@ -1,10 +1,10 @@
 # frozen_string_literal: true
-
+require_relative 'lib/travis/version'
 # Run `rake travis.gemspec` to update the gemspec.
 Gem::Specification.new do |s|
   # general info
   s.name        = 'travis'
-  s.version     = '1.12.0'
+  s.version     = Travis::VERSION
   s.required_ruby_version = '>= 3.2.0'
   s.description = 'CLI and Ruby client library for Travis CI'
   s.homepage    = 'https://github.com/travis-ci/travis.rb'
@@ -288,6 +288,8 @@ Gem::Specification.new do |s|
     'lib/travis/cli/parser.rb',
     'lib/travis/cli/pubkey.rb',
     'lib/travis/cli/raw.rb',
+    'lib/travis/cli/regenerate_token.rb',
+    'lib/travis/cli/remove_token.rb',
     'lib/travis/cli/repo_command.rb',
     'lib/travis/cli/report.rb',
     'lib/travis/cli/repos.rb',
@@ -414,11 +416,12 @@ Gem::Specification.new do |s|
   # dependencies
   s.add_dependency 'faraday', '~> 2.7.10'
   s.add_dependency 'faraday-rack', '~> 2'
+  s.add_dependency 'travis-gh', '~> 0.21.0'
   s.add_dependency 'highline',              '~> 2.1.0'
   s.add_dependency 'json_pure',             '~> 2.6.3'
   s.add_dependency 'launchy',               '~> 2.5.2'
   s.add_dependency 'pusher-client',         '~> 0.6.2'
-  s.add_development_dependency 'rack-test', '~> 2.1.0'
+  s.add_dependency 'rack-test', '~> 2.1.0'
   s.add_development_dependency 'rspec',     '~> 3.12'
   s.add_development_dependency 'rspec-its', '~> 1.3.0'
   s.add_development_dependency 'sinatra',   '~> 3.0.6'

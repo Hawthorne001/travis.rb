@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: false
 
 require 'travis/tools/assets'
 require 'travis/cli'
@@ -34,8 +34,8 @@ module Travis
       end
 
       def update_completion
-        mkdir_p(config_path)
-        cp(Assets['travis.sh'], cmp_file)
+        FileUtils.mkdir_p(config_path)
+        FileUtils.cp(Assets['travis.sh'], cmp_file)
       end
 
       def completion_installed?
